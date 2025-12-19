@@ -10,9 +10,54 @@ import { Badge } from '@/components/ui/badge';
 import { StarIcon } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
   const { sectionRef } = useGsapScrollAnimations();
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  // Counter animation for stats
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stats = entry.target.querySelectorAll('[data-target]');
+          stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target') || '0');
+            const suffix = stat.textContent?.replace(/^\d+/, '') || '';
+            let count = 0;
+            const duration = 2000; // Animation duration in ms
+            const increment = target / (duration / 16); // 16ms ~ 60fps
+
+            const updateCount = () => {
+              count += increment;
+              if (count < target) {
+                stat.textContent = Math.ceil(count) + suffix;
+                requestAnimationFrame(updateCount);
+              } else {
+                stat.textContent = target + suffix;
+              }
+            };
+
+            updateCount();
+          });
+
+          // Stop observing after animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -34,6 +79,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mockProducts
               .filter(product => product.featured)
+              .slice(0, 5) // Limit to 5 featured products
               .map((product, index) => (
                 <motion.div
                   key={product.id}
@@ -104,12 +150,12 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8" ref={statsRef}>
               {[
-                { value: '10000+', label: 'Happy Customers' },
-                { value: '98%', label: 'Customer Satisfaction' },
-                { value: '500+', label: 'Products' },
-                { value: '24/7', label: 'Support Hours' }
+                { value: '10000', label: 'Happy Customers', suffix: '+' },
+                { value: '98', label: 'Customer Satisfaction', suffix: '%' },
+                { value: '500', label: 'Products', suffix: '+' },
+                { value: '24', label: 'Support Hours', suffix: '/7' }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -119,7 +165,12 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
-                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{stat.value}</div>
+                  <div
+                    className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2"
+                    data-target={stat.value}
+                  >
+                    0{stat.suffix}
+                  </div>
                   <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
                 </motion.div>
               ))}
@@ -192,22 +243,28 @@ export default function Home() {
               Join thousands of satisfied customers who trust our premium electronics
             </p>
 
-            <div className="flex flex-wrap justify-center items-center gap-12 mb-12">
-              {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-2xl font-bold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer"
-                >
-                  {company}
-                </motion.div>
-              ))}
+            <div className="relative overflow-hidden py-4">
+              <div className="animate-marquee whitespace-nowrap flex">
+                {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
+                  <motion.div
+                    key={index}
+                    className="text-3xl font-bold text-gray-700 dark:text-gray-300 mx-12 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {company}
+                  </motion.div>
+                ))}
+                {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
+                  <motion.div
+                    key={`duplicate-${index}`}
+                    className="text-3xl font-bold text-gray-700 dark:text-gray-300 mx-12 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                  >
+                    {company}
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            <Button asChild>
+            <Button asChild className="mt-12">
               <Link href="/products">Explore All Products</Link>
             </Button>
           </div>
