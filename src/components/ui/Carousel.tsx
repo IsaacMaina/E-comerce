@@ -67,16 +67,31 @@ const Carousel = () => {
               sizes="100vw"
               priority={index === 0}
             />
+            {/* Light overlay for text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/5 to-black/60"></div>
           </div>
         ))}
       </div>
-      {/* Carousel controls */}
+
+      {/* Title and Subtitle overlay */}
+      <div className="absolute top-1/4 left-0 right-0 z-20 px-4">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
+            Discover Electronics in 3D
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl mx-auto opacity-90">
+            Experience Kenya's premier electronics shopping with immersive 3D visualization
+          </p>
+        </div>
+      </div>
+
+      {/* Carousel controls - hidden on mobile */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           goToPrevious();
         }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg hidden sm:block"
         aria-label="Previous slide"
       >
         <svg
@@ -99,7 +114,7 @@ const Carousel = () => {
           e.stopPropagation();
           goToNext();
         }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg hidden sm:block"
         aria-label="Next slide"
       >
         <svg
@@ -133,8 +148,24 @@ const Carousel = () => {
         ))}
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+      {/* Carousel indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-15 flex space-x-2">
+        {carouselImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+              index === currentIndex
+                ? "bg-white w-8 h-2.5 backdrop-blur-sm shadow-lg"
+                : "bg-white/60 hover:bg-white/80"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Scroll indicator - lifted higher */}
+      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 animate-bounce">
         <button
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           className="text-white/80 hover:text-white transition-colors duration-300"
