@@ -70,7 +70,7 @@ export default function ProductDetailContent({ params }: ProductDetailContentPro
           </div>
 
           <div className="grid grid-cols-4 gap-4 mt-4">
-            {product.images?.length > 0 ? (
+            {product.images && product.images.length > 0 ? (
               product.images.map((image, index) => (
                 <div
                   key={index}
