@@ -73,15 +73,17 @@ const Carousel = () => {
         ))}
       </div>
 
-      {/* Title and Subtitle overlay */}
+      {/* Title and Subtitle overlay with dark background box */}
       <div className="absolute top-1/4 left-0 right-0 z-20 px-4">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
-            Discover Electronics in 3D
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl mx-auto opacity-90">
-            Experience Kenya's premier electronics shopping with immersive 3D visualization
-          </p>
+          <div className="inline-block bg-black/50 backdrop-blur-sm px-6 py-4 rounded-xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
+              Discover Electronics in 3D
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">
+              Experience Kenya's premier electronics shopping with immersive 3D visualization
+            </p>
+          </div>
         </div>
       </div>
 
