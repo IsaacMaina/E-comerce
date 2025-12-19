@@ -61,13 +61,13 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <p className="mb-2">General Inquiries:</p>
-              <p className="font-medium">info@3decommerce.com</p>
-              
+              <p className="font-medium">mainaisaacwachira2000@gmail.com</p>
+
               <p className="mb-2 mt-4">Customer Support:</p>
-              <p className="font-medium">support@3decommerce.com</p>
+              <p className="font-medium">mainaisaacwachira2000@gmail.com</p>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -76,13 +76,13 @@ export default function ContactPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="font-medium">+1 (800) 123-4567</p>
+              <p className="font-medium">+254 758 302725</p>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                Monday-Friday: 9:00 AM - 6:00 PM EST
+                Monday-Friday: 8:00 AM - 6:00 PM EAT
               </p>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -91,8 +91,8 @@ export default function ContactPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="font-medium">123 Innovation Drive</p>
-              <p className="font-medium">San Francisco, CA 94107</p>
+              <p className="font-medium">123 Technology Plaza</p>
+              <p className="font-medium">Nairobi, Kenya</p>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                 Our flagship experience center is open to the public
               </p>

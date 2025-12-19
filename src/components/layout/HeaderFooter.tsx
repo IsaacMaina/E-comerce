@@ -113,10 +113,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <address className="not-italic text-gray-600 dark:text-gray-400">
-              <p>123 Innovation Drive</p>
-              <p>San Francisco, CA 94107</p>
-              <p className="mt-2">Email: info@electronicsales.com</p>
-              <p>Phone: (800) 123-4567</p>
+              <p>123 Technology Plaza</p>
+              <p>Nairobi, Kenya</p>
+              <p className="mt-2">Email: mainaisaacwachira2000@gmail.com</p>
+              <p>Phone: +254 758 302725</p>
             </address>
           </div>
         </div>
