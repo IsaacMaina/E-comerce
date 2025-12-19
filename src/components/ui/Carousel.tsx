@@ -73,16 +73,22 @@ const Carousel = () => {
         ))}
       </div>
 
-      {/* Title and Subtitle overlay with dark background box */}
+      {/* Title, Subtitle and Explore Button overlay with dark background box */}
       <div className="absolute top-1/4 left-0 right-0 z-20 px-4">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <div className="inline-block bg-black/50 backdrop-blur-sm px-6 py-4 rounded-xl">
+          <div className="inline-block bg-black/50 backdrop-blur-sm px-6 py-6 rounded-xl">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
               Discover Electronics in 3D
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto mb-6">
               Experience Kenya's premier electronics shopping with immersive 3D visualization
             </p>
+            <a
+              href="/products"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
+            >
+              Explore Products
+            </a>
           </div>
         </div>
       </div>
