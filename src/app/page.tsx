@@ -243,23 +243,23 @@ export default function Home() {
               Join thousands of satisfied customers who trust our premium electronics
             </p>
 
-            <div className="relative overflow-hidden py-4">
-              <div className="animate-marquee whitespace-nowrap flex">
+            <div className="py-8 overflow-hidden">
+              <div className="flex animate-marquee space-x-12 items-center justify-around">
                 {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    className="text-3xl font-bold text-gray-700 dark:text-gray-300 mx-12 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                    className="flex-shrink-0 text-4xl font-bold text-gray-700 dark:text-gray-300 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     {company}
-                  </motion.div>
+                  </div>
                 ))}
                 {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
-                  <motion.div
+                  <div
                     key={`duplicate-${index}`}
-                    className="text-3xl font-bold text-gray-700 dark:text-gray-300 mx-12 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                    className="flex-shrink-0 text-4xl font-bold text-gray-700 dark:text-gray-300 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     {company}
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
