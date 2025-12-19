@@ -1,0 +1,11 @@
+To add a favicon to your application, place a favicon.ico file in the public directory.
+
+You can generate a favicon at sites like:
+- https://www.favicon-generator.org/
+- https://realfavicongenerator.net/
+- https://favicon.io/
+
+Make sure your favicon is:
+- 16x16, 32x32, or 48x48 pixels
+- In .ico format
+- Named favicon.ico
