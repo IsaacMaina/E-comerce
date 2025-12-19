@@ -48,9 +48,9 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-4rem)] overflow-hidden">
+    <div className="relative w-full h-[75vh] sm:h-[75vh] overflow-hidden">
       {" "}
-      {/* Screen height minus nav height */}
+      {/* Screen height: 75% of view height on all devices */}
       <div className="relative w-full h-full">
         {carouselImages.map((image, index) => (
           <div
