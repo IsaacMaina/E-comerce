@@ -6,14 +6,12 @@ import Image from "next/image";
 const Carousel = () => {
   // Get carousel images from the public folder
   const carouselImages = [
-    "/carousel/lapi3.jpg",
     "/carousel/lapi9.jpg",
     "/carousel/phones11.jpg",
     "/carousel/phones13.jpg",
     "/carousel/phones14.jpg",
     "/carousel/phones17.jpg",
     "/carousel/speakers2.jpg",
-    "/carousel/speakers3.jpg",
     "/carousel/speakers6.jpg",
     "/carousel/watch4.jpg",
   ];
@@ -48,9 +46,9 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full h-[75vh] sm:h-[75vh] overflow-hidden">
+    <div className="relative w-full h-[calc(100vh-4rem)] overflow-hidden">
       {" "}
-      {/* Screen height: 75% of view height on all devices */}
+      {/* Screen height minus nav height */}
       <div className="relative w-full h-full">
         {carouselImages.map((image, index) => (
           <div
@@ -133,6 +131,30 @@ const Carousel = () => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <button
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          className="text-white/80 hover:text-white transition-colors duration-300"
+          aria-label="Scroll down to explore more"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );

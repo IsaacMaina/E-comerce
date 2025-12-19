@@ -63,7 +63,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Carousel />
 
-      <main className="container mx-auto px-4 py-8 flex-grow" ref={sectionRef}>
+      <main className="container mx-auto px-4 py-8" ref={sectionRef}>
         <section className="text-center py-12 animate-item">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">Premium Electronics Collection</h1>
           <p className="text-base sm:text-lg mb-6 max-w-2xl mx-auto">
