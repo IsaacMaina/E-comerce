@@ -194,21 +194,24 @@ export default function Home() {
                 name: 'John Smith',
                 role: 'CEO, TechCorp',
                 content: 'The products exceeded our expectations. Quality and performance are unmatched in the industry.',
-                avatar: '/avatars/avatar1.jpg'
+                avatar: '/avatars/avatar1.jpg',
+                color: 'bg-blue-50 dark:bg-blue-900/20'
               },
               {
                 id: 2,
                 name: 'Sarah Johnson',
                 role: 'Designer, Creative Studio',
                 content: 'Fast shipping and excellent customer service. Will definitely order again!',
-                avatar: '/avatars/avatar2.jpg'
+                avatar: '/avatars/avatar2.jpg',
+                color: 'bg-purple-50 dark:bg-purple-900/20'
               },
               {
                 id: 3,
                 name: 'Michael Brown',
                 role: 'Developer, StartupX',
                 content: 'The 3D visualization helped me make the right choice. Great attention to detail.',
-                avatar: '/avatars/avatar3.jpg'
+                avatar: '/avatars/avatar3.jpg',
+                color: 'bg-green-50 dark:bg-green-900/20'
               }
             ].map((testimonial, index) => (
               <motion.div
@@ -218,7 +221,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className={`${testimonial.color} rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer`}
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-gray-200 rounded-full mr-4 flex items-center justify-center">
@@ -244,23 +247,57 @@ export default function Home() {
             </p>
 
             <div className="py-8 overflow-hidden">
-              <div className="flex animate-marquee space-x-12 items-center justify-around">
-                {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 text-4xl font-bold text-gray-700 dark:text-gray-300 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                  >
-                    {company}
-                  </div>
-                ))}
-                {['TechCorp', 'Creative Studio', 'StartupX', 'Innovate Inc', 'Digital Solutions', 'Future Tech'].map((company, index) => (
-                  <div
-                    key={`duplicate-${index}`}
-                    className="flex-shrink-0 text-4xl font-bold text-gray-700 dark:text-gray-300 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                  >
-                    {company}
-                  </div>
-                ))}
+              <div className="animate-marquee whitespace-nowrap">
+                <div className="inline-flex space-x-6">
+                  {[
+                    { name: 'TechCorp', logo: 'TC', description: 'Leading tech solutions provider in East Africa', since: '2010', color: 'bg-blue-100 dark:bg-blue-900/50' },
+                    { name: 'Creative Studio', logo: 'CS', description: 'Award-winning design and marketing agency', since: '2012', color: 'bg-purple-100 dark:bg-purple-900/50' },
+                    { name: 'StartupX', logo: 'SX', description: 'Innovation hub for African startups', since: '2015', color: 'bg-green-100 dark:bg-green-900/50' },
+                    { name: 'Innovate Inc', logo: 'II', description: 'Pioneering sustainable technology solutions', since: '2011', color: 'bg-yellow-100 dark:bg-yellow-900/50' },
+                    { name: 'Digital Solutions', logo: 'DS', description: 'Comprehensive digital transformation services', since: '2013', color: 'bg-red-100 dark:bg-red-900/50' },
+                    { name: 'Future Tech', logo: 'FT', description: 'Cutting-edge AI and machine learning applications', since: '2016', color: 'bg-indigo-100 dark:bg-indigo-900/50' }
+                  ].map((company, index) => (
+                    <div
+                      key={index}
+                      className={`flex-shrink-0 ${company.color} rounded-xl shadow-md p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer`}
+                    >
+                      <div className="flex items-center">
+                        <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                          <span className="text-lg font-bold">{company.logo}</span>
+                        </div>
+                        <div className="ml-4">
+                          <h3 className="font-bold text-gray-900 dark:text-white">{company.name}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">{company.description}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Since {company.since}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {[
+                    { name: 'TechCorp', logo: 'TC', description: 'Leading tech solutions provider in East Africa', since: '2010', color: 'bg-blue-100 dark:bg-blue-900/50' },
+                    { name: 'Creative Studio', logo: 'CS', description: 'Award-winning design and marketing agency', since: '2012', color: 'bg-purple-100 dark:bg-purple-900/50' },
+                    { name: 'StartupX', logo: 'SX', description: 'Innovation hub for African startups', since: '2015', color: 'bg-green-100 dark:bg-green-900/50' },
+                    { name: 'Innovate Inc', logo: 'II', description: 'Pioneering sustainable technology solutions', since: '2011', color: 'bg-yellow-100 dark:bg-yellow-900/50' },
+                    { name: 'Digital Solutions', logo: 'DS', description: 'Comprehensive digital transformation services', since: '2013', color: 'bg-red-100 dark:bg-red-900/50' },
+                    { name: 'Future Tech', logo: 'FT', description: 'Cutting-edge AI and machine learning applications', since: '2016', color: 'bg-indigo-100 dark:bg-indigo-900/50' }
+                  ].map((company, index) => (
+                    <div
+                      key={`duplicate-${index}`}
+                      className={`flex-shrink-0 ${company.color} rounded-xl shadow-md p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer`}
+                    >
+                      <div className="flex items-center">
+                        <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
+                          <span className="text-lg font-bold">{company.logo}</span>
+                        </div>
+                        <div className="ml-4">
+                          <h3 className="font-bold text-gray-900 dark:text-white">{company.name}</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">{company.description}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Since {company.since}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

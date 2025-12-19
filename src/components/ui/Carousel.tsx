@@ -69,7 +69,6 @@ const Carousel = () => {
               sizes="100vw"
               priority={index === 0}
             />
-            <div className="absolute inset-0 bg-black/70"></div>
           </div>
         ))}
       </div>
@@ -134,29 +133,6 @@ const Carousel = () => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
-      {/* Content overlay at top */}
-      <div className="absolute top-1/4 left-0 right-0 z-10 p-6">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">Discover Electronics in 3D</h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Experience Kenya's premier electronics shopping with immersive 3D visualization
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/products"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-            >
-              Shop Latest Tech
-            </a>
-            <a
-              href="/about"
-              className="inline-block bg-transparent hover:bg-white/10 text-white font-bold py-3 px-6 rounded-lg border border-white/30 transition duration-300"
-            >
-              Our Story
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   );
